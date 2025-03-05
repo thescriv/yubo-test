@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -b -f",
+    "build": "tsc",
     "clean": "rm -rf dist"
   },
   "keywords": [],

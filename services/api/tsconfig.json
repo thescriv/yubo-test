@@ -2,9 +2,7 @@
 	"extends": "../../tsconfig.base.json",
 	"compilerOptions": {
 		"outDir": "dist",
-		"paths": {
-			"@pkg/mongo": ["../../pkg/mongo/src"]
-		}
+		"typeRoots": ["src/types"]
 	},
-	"include": ["src"]
+	"include": ["src/**/*.ts"]
 }
