@@ -11,9 +11,11 @@ COPY services/api/package.json services/api/
 RUN pnpm install --frozen-lockfile
 
 COPY tsconfig.base.json ./
+COPY /services/api/tsconfig.json ./services/api/tsconfig.json
 COPY services/api ./services/api
 WORKDIR /app/services/api
 RUN pnpm run build
+
 
 FROM node:18 AS runtime
 
@@ -22,6 +24,6 @@ COPY --from=builder /app/services/api/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/services/api/package.json ./
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "./dist/index.js"]
 
 EXPOSE 3000
