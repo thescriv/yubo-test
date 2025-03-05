@@ -10,9 +10,6 @@ import {
 
 export interface IMongoRepository<T extends Document> {
 	insertOne(item: OptionalUnlessRequiredId<T>): Promise<void>
-	aggregate(
-		p: Document[],
-		o: AggregateOptions & Abortable
-	): Promise<AggregationCursor<T>>
+	countDocument(f: Filter<T>): Promise<number>
 	deleteMany(f: Filter<T>, o?: DeleteOptions): Promise<void>
 }

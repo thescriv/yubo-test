@@ -26,11 +26,8 @@ export class MongoRepository<T extends Document>
 		await this.collection.insertOne(item, o)
 	}
 
-	async aggregate(
-		p: Document[],
-		o: AggregateOptions & Abortable
-	): Promise<AggregationCursor<T>> {
-		return this.collection.aggregate(p, o)
+	async countDocument(f: Filter<T>): Promise<number>{
+		return this.collection.countDocuments(f)
 	}
 
 	async deleteMany(f: Filter<T>, o?: DeleteOptions): Promise<void> {

@@ -11,8 +11,9 @@ import { MongoRepository } from "./MongoRepository"
 
 export interface Swipe {
 	_id?: string
-	type: "swipe-liked" | "swipe-disliked"
-	uid: string
+	liked: boolean
+	user_id: string
+	target_id: string
 }
 
 export class SwipeRepository {
@@ -22,18 +23,25 @@ export class SwipeRepository {
 		this.repository = new MongoRepository<Swipe>(db, "swipes")
 	}
 
-	async aggregateSwipe(
-		pipeline: Document[],
-		options: AggregateOptions & Abortable
-	): Promise<AggregationCursor<Swipe>> {
-		return this.repository.aggregate(pipeline, options)
+	async countLike(s: Swipe | Partial<Swipe>): Promise<number> {
+		const f: Filter<Swipe> = { user_id: s.user_id, liked: true }
+
+		return this.repository.countDocument(f)
+	}
+
+	async countDislike(s: Swipe | Partial<Swipe>): Promise<number> {
+		const f: Filter<Swipe> = { user_id: s.user_id, liked: false }
+
+		return this.repository.countDocument(f)
 	}
 
 	async createSwipe(s: Swipe): Promise<void> {
 		await this.repository.insertOne(s)
 	}
 
-	async deleteSwipes(f: Filter<Swipe>): Promise<void> {
+	async deleteUser(s: Swipe | Partial<Swipe>): Promise<void> {
+		const f: Filter<Swipe> = { user_id: s.user_id, liked: false }
+
 		await this.repository.deleteMany(f)
 	}
 }
