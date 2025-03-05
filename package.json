@@ -13,8 +13,7 @@
 	},
 	"private": true,
 	"workspaces": [
-		"services/*",
-		"pkg/*"
+		"services/*"
 	],
 	"keywords": [],
 	"author": "",

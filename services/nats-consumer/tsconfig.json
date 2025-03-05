@@ -1,10 +1,7 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-        "outDir": "dist",
-        "paths": {
-			"@pkg/mongo": ["../../pkg/mongo/src"]
-		}
+        "outDir": "dist"
     },
     "include": [
         "src"
