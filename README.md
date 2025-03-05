@@ -15,9 +15,9 @@ Run the following command to start the docker containers:
 docker-compose up -d
 ```
 
-The HTML file will be served at the following address -> http://localhost:80.
+The HTML file will be served at the following address -> `http://localhost:80`
 
-you should modify the api url inside the html page to: http://localhost:3000/api (you only need to the port)
+you should modify the api url inside the html page to: `http://localhost:3000/api` (you only need to the port)
 no need to change the websocket url (normally)
 
 #### Connecting to MongoDB
