@@ -11,5 +11,5 @@ import {
 export interface IMongoRepository<T extends Document> {
 	insertOne(item: OptionalUnlessRequiredId<T>): Promise<void>
 	countDocument(f: Filter<T>): Promise<number>
-	deleteMany(f: Filter<T>, o?: DeleteOptions): Promise<void>
+	deleteMany(f: Filter<T>): Promise<void>
 }

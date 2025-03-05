@@ -1,11 +1,4 @@
-import {
-	Abortable,
-	AggregateOptions,
-	AggregationCursor,
-	Db,
-	Document,
-	Filter,
-} from "mongodb"
+import { Db, Filter } from "mongodb"
 import { IMongoRepository } from "./IMongoRepository"
 import { MongoRepository } from "./MongoRepository"
 

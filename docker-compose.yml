@@ -23,6 +23,7 @@ services:
     environment:
       - MONGO_URI=mongodb://admin:1234@mongo:27017/yubo?authSource=admin
       - NATS_URL=nats://nats:4222
+      - WEBSOCKET_URL=ws://websocket:3002
     ports:
       - "3001:3001"
 
@@ -32,9 +33,6 @@ services:
       dockerfile: services/websocket/Dockerfile
     depends_on:
       - frontend
-    environment:
-      - MONGO_URI=mongodb://admin:1234@mongodb:27017/yubo?authSource=admin
-      - NATS_URL=nats://nats:4222
     ports:
       - "3002:3002"
 

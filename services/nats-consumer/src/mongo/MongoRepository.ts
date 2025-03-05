@@ -3,9 +3,6 @@ import {
 	Db,
 	Document,
 	OptionalUnlessRequiredId,
-	AggregateOptions,
-	Abortable,
-	AggregationCursor,
 	Filter,
 	DeleteOptions,
 	InsertOneOptions,
@@ -22,11 +19,13 @@ export class MongoRepository<T extends Document>
 		this.collection = db.collection<T>(collectionName)
 	}
 
-	async insertOne(item: OptionalUnlessRequiredId<T>, o?: InsertOneOptions): Promise<void> {
-		await this.collection.insertOne(item, o)
+	async insertOne(
+		item: OptionalUnlessRequiredId<T>,
+	): Promise<void> {
+		await this.collection.insertOne(item)
 	}
 
-	async countDocument(f: Filter<T>): Promise<number>{
+	async countDocument(f: Filter<T>): Promise<number> {
 		return this.collection.countDocuments(f)
 	}
 

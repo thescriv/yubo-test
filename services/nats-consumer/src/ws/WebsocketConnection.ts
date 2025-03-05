@@ -10,13 +10,13 @@ export class WebsocketConnection {
 			if (!this.ws) {
 				return
 			}
-			console.log("Connexion au websocket close")
+			console.log("Disconnected from websocket")
 			this.ws?.close()
 			this.ws = null
 			return
 		})
 
-        console.log("connecté au websocket !")
+        console.log("Connected to the websocket")
 
 		return this.ws
 	}
