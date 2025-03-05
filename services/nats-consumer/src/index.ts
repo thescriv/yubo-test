@@ -1,4 +1,7 @@
 import { connect, StringCodec, NatsConnection } from "nats"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const NATS_URL = "nats://nats:4222"
 const sc = StringCodec()

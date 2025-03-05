@@ -1,4 +1,7 @@
 import WebSocket from "ws"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 const PORT = 3001
 const wss = new WebSocket.Server({ port: PORT })
