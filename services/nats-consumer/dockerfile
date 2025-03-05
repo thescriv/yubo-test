@@ -1,0 +1,26 @@
+FROM node:18-slim AS builder
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+WORKDIR /app
+
+COPY package.json pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+COPY services/nats-consumer/package.json services/nats-consumer/
+RUN pnpm install --frozen-lockfile
+
+COPY tsconfig.base.json ./
+COPY services/nats-consumer ./services/nats-consumer
+WORKDIR /app/services/nats-consumer
+RUN pnpm run build
+
+FROM node:18 AS runtime
+
+WORKDIR /app
+COPY --from=builder /app/services/nats-consumer/dist ./dist
+COPY --from=builder /app/services/nats-consumer/package.json ./
+
+CMD ["node", "dist/index.js"]
+
+EXPOSE 3001
