@@ -7,7 +7,7 @@ services:
       - mongo
       - nats-consumer
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipes
+      - MONGO_URI=mongodb://mongodb:27017/yubo
       - NATS_URL=nats://nats:4222
     ports:
       - "3000:3000"
@@ -21,7 +21,7 @@ services:
       - nats
       - websocket
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipes
+      - MONGO_URI=mongodb://mongodb:27017/yubo
       - NATS_URL=nats://nats:4222
     ports:
       - "3001:3001"
@@ -33,7 +33,7 @@ services:
     depends_on:
       - frontend
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipes
+      - MONGO_URI=mongodb://mongodb:27017/yubo
       - NATS_URL=nats://nats:4222
     ports:
       - "3002:3002"
@@ -55,7 +55,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=1234
-      - MONGO_INITDB_DATABASE=swipes
+      - MONGO_INITDB_DATABASE=yubo
     volumes:
       - dbdata:/data/db
     ports:

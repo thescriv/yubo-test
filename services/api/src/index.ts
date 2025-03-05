@@ -1,5 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
+import {MongoConnection} from "@pkg/mongo"
 
 dotenv.config()
 

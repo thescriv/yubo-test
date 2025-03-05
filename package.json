@@ -1,34 +1,36 @@
 {
-  "name": "yubo-test",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "pnpm run -r build",
-    "start": "pnpm run -r start",
-    "clean": "pnpm run -r clean",
-    "docker:down": "docker-compose down",
-    "docker:build": "docker-compose build --no-cache",
-    "docker:up": "docker-compose up -d"
-  },
-  "private": true,
-  "workspaces": [
-    "services/*"
-  ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.4.1",
-  "devDependencies": {
-    "@types/node": "^22.13.9",
-    "typescript": "^5.8.2"
-  },
-  "dependencies": {
-    "@types/express": "^5.0.0",
-    "@types/ws": "^8.18.0",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "nats": "^2.29.2",
-    "ws": "^8.18.1"
-  }
+	"name": "yubo-test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "pnpm run -r build",
+		"start": "pnpm run -r start",
+		"clean": "pnpm run -r clean",
+		"docker:down": "docker-compose down",
+		"docker:build": "docker-compose build --no-cache",
+		"docker:up": "docker-compose up -d"
+	},
+	"private": true,
+	"workspaces": [
+		"services/*",
+    "pkg/*"
+	],
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.4.1",
+	"devDependencies": {
+		"@types/express": "^5.0.0",
+		"@types/node": "^22.13.9",
+		"@types/ws": "^8.18.0",
+		"typescript": "^5.8.2"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2",
+		"mongodb": "^6.14.2",
+		"nats": "^2.29.2",
+		"ws": "^8.18.1"
+	}
 }
