@@ -19,6 +19,7 @@ FROM node:18 AS runtime
 
 WORKDIR /app
 COPY --from=builder /app/services/nats-consumer/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/services/nats-consumer/package.json ./
 
 CMD ["node", "dist/index.js"]

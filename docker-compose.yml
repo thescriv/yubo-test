@@ -7,7 +7,7 @@ services:
       - mongo
       - nats-consumer
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipesdb
+      - MONGO_URI=mongodb://mongodb:27017/swipes
       - NATS_URL=nats://nats:4222
     ports:
       - "3000:3000"
@@ -18,12 +18,13 @@ services:
       dockerfile: services/nats-consumer/Dockerfile
     depends_on:
       - mongo
+      - nats
       - websocket
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipesdb
+      - MONGO_URI=mongodb://mongodb:27017/swipes
       - NATS_URL=nats://nats:4222
     ports:
-      - "4222:4222"
+      - "3001:3001"
 
   websocket:
     build:
@@ -32,10 +33,10 @@ services:
     depends_on:
       - frontend
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/swipesdb
+      - MONGO_URI=mongodb://mongodb:27017/swipes
       - NATS_URL=nats://nats:4222
     ports:
-      - "3001:3001"
+      - "3002:3002"
 
   frontend:
     build:
@@ -43,6 +44,11 @@ services:
       dockerfile: services/front/Dockerfile
     ports:
       - "80:80"
+
+  nats:
+    image: nats
+    ports:
+      - "4222:4222"
 
   mongo:
     image: mongo
